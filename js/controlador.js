@@ -1,36 +1,40 @@
 let funciones = require('./js/funciones');
+let grafica = require('./js/graficar.js');
 
 function ejecutar() {
     let accion = document.querySelector('#accion').value;
+    let data ;
     if(accion === 'Suma' || accion === 'Resta' || accion === 'Multiplicacion' ){
-        funciones.operacionBasica();
+        data = funciones.operacionBasica();
     }
     else{
         switch (accion) {
             case 'Multiplicacion(Escalar)':
-                funciones.multiplicarEscalar();
+                data = funciones.multiplicarEscalar();
                 break;
 
             case 'Reflejo':
-                funciones.reflejar();
+                data = funciones.reflejar();
                 break;
 
             case 'Desplazamiento':
-                funciones.desplazar();
+                 data = funciones.desplazar();
                 break;
 
             case 'Diezmacion':
-                funciones.diezmar();
+                data = funciones.diezmar();
                 break;
 
             case 'Interpolacion':
-                funciones.interpolar();
+                data = funciones.interpolar();
                 break;
 
             case 'Convolucion':
-                funciones.convolucionar();
+                data = funciones.convolucionar();
                 break;
         }
-    }
 
+    }
+    console.log(data);
+    grafica.graficar(data, accion);
 }

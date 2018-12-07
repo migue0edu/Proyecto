@@ -1,6 +1,6 @@
-body {
-    background: #36383F !important;
-}
+/*body {*/
+    /*background: #C09F80 !important;*/
+/*}*/
 
 hr {
     border-color: white !important;
@@ -11,11 +11,16 @@ hr {
 }
 
 .card-body {
-    background: #232323 !important;
-    color: white !important;
+    background: #D7CEC7 !important;
+    color: black !important;
 }
 
 .card-header{
-    background: black !important;
+    background: #76323F !important;
     color: white !important;
+}
+
+#param-label{
+    font-weight: bolder;
+    font-size: larger;
 }

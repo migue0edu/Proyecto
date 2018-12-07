@@ -46,8 +46,11 @@ let operacionBasica = ()=>{
     }
     let textResultado = aTexto(resultado, mayorOrgn);
     console.log(textResultado);
-    document.querySelector('#resultado').value = `{${textResultado.toString()} }`;
-    return resultado;
+    document.querySelector('#resultado').value = textResultado.toString();
+    return {
+        resultado,
+        origen: mayorOrgn
+    };
 };
 
 let multiplicarEscalar = ()=> {
@@ -63,17 +66,25 @@ let multiplicarEscalar = ()=> {
         resultado.push(x[i]*param);
     }
     let textResultado = aTexto(resultado, ox);
-    document.querySelector('#resultado').value = `{${textResultado.toString()} }`;
-    return resultado;
+    document.querySelector('#resultado').value = textResultado.toString();
+    return {
+        resultado,
+        origen: ox
+    };
 };
 
 let reflejar = () => {
     let textoX = document.querySelector('#serieX').value;
     let resultado = transformar(textoX);
     resultado.reverse();
-    resultado = limapiarResultado(resultado);
-    document.querySelector('#resultado').value = resultado.toString();
-    return resultado;
+    let ox = obtenerOrigen(resultado);
+    resultado = aNumeros(resultado);
+    let textResultado = aTexto(resultado, ox);
+    document.querySelector('#resultado').value = textResultado.toString();
+    return {
+        resultado,
+        origen: ox
+    };
 
 };
 
@@ -109,8 +120,11 @@ let desplazar = () => {
 
     let textResultado = aTexto(resultado, nuevoOrgn);
     console.log(textResultado, nuevoOrgn);
-    document.querySelector('#resultado').value = `{${textResultado.toString()} }`;
-    return resultado;
+    document.querySelector('#resultado').value = textResultado.toString();
+    return {
+        resultado,
+        origen: nuevoOrgn
+    };
 };
 
 let diezmar = () => {
@@ -139,8 +153,11 @@ let diezmar = () => {
     console.log(resultado);
     let textResultado = aTexto(resultado, nuevoOrgn);
 
-    document.querySelector('#resultado').value = `{${textResultado.toString()} }`;
-    return resultado;
+    document.querySelector('#resultado').value = textResultado.toString();
+    return {
+        resultado,
+        origen: nuevoOrgn
+    };
 };
 
 let interpolar = () => {
@@ -181,13 +198,16 @@ let interpolar = () => {
         }
         resultado.push(x[x.length-1]);
         for(let i=1; i<param;i++){
-            resultado.push(x[x.length-1] + val);
+            resultado.push(x[x.length-i] + val);
         }
     }
     ox += ox*(param-1);
     let textResultado = aTexto(resultado, ox);
-    document.querySelector('#resultado').value = `{${textResultado.toString()} }`;
-    return resultado;
+    document.querySelector('#resultado').value = textResultado.toString();
+    return {
+        resultado,
+        origen: ox
+    };
 };
 
 let convolucionar = () => {
@@ -217,8 +237,11 @@ let convolucionar = () => {
     nuevoOrgn = ox + oh;
     let textResultado = aTexto(resultado, nuevoOrgn);
 
-    document.querySelector('#resultado').value = `{${textResultado.toString()} }`;
-    return resultado;
+    document.querySelector('#resultado').value = textResultado.toString();
+    return {
+        resultado,
+        origen: nuevoOrgn
+    };
 };
 
 //====================================================================================================================
@@ -304,5 +327,8 @@ module.exports = {
     multiplicarEscalar,
     diezmar,
     interpolar,
-    convolucionar
+    convolucionar,
+    transformar,
+    obtenerOrigen,
+    aNumeros
 };

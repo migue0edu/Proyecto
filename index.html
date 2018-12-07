@@ -10,7 +10,7 @@
 <body >
     <div class="container ml-3 mr-3">
         <div class="row">
-            <div class="col-4">
+            <div class="col-4" id="formCol">
                 <div class="card rounded my-2">
                     <div class="card-header" >
                         Ingrese datos:
@@ -27,11 +27,29 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="serieX" ><h4>X(n)</h4></label>
-                                    <input type="text" class="form-control" id="serieX" placeholder="1,2,3*,4">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">{</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="serieX" placeholder="">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">}</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-12" id="serieY">
                                     <label for="serieH"><h4>Y(n)</h4></label>
-                                    <input type="text" class="form-control" id="serieH" placeholder="5,8,10,5,6,8*,1">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">{</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="serieH" placeholder="">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">}</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-md-12" id="tipoInterpolacion" >
                                     <label for="tipoI">Convención de interpolación:</label>
@@ -40,11 +58,16 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group row">
-                                    <label for="parametro" class="col-3 col-form-label">Factor:</label>
-                                    <div class="col-4">
-                                        <input type="number" class="form-control" id="parametro" placeholder="1">
+                                    <label for="parametro" class="col-1 col-form-label" id="param-label">n</label>
+                                    <div class="col-5">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">=</span>
+                                            </div>
+                                            <input type="number" class="form-control" id="parametro" text="0">
+                                        </div>
                                     </div>
-                                    <div class="col-auto ml-4">
+                                    <div class="col-5 ml-4">
                                         <button type="button" class="btn bg-info" onclick="ejecutar()">Realizar</button>
                                     </div>
                                 </div>
@@ -57,16 +80,37 @@
                         Resultado:
                     </div>
                     <div class="card-body">
-                        <input type="text" class="form-control" id="resultado" readonly>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">{</span>
+                            </div>
+                            <input type="text" class="form-control" id="resultado" readonly>
+                            <div class="input-group-append">
+                                <span class="input-group-text">}</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col"></div>
+            <div class="col" id="graphCol">
+                <div class="row">
+                    <div>
+                        <button class="btn btn-primary" id="br" onclick="cambiarGrafica('res')">Resultado</button>
+                        <button class="btn btn-primary" id="bx" onclick="cambiarGrafica('x')">X(n)
+                        <button class="btn btn-primary" id="bh" onclick="cambiarGrafica('h')">Y(n)</button>
+                    </div>
+                </div>
+                <div class="row"></div>
+                    <div  id="tabres">...</div>
+                    <div  id="tabx"  style="display: none">...</div>
+                    <div  id="tabh" style="display: none">...</div>
+            </div>
         </div>
     </div>
 
 
-
+    <script src="js/canvasjs-2.2/canvasjs.min.js"></script>
     <script src="js/configUi.js"></script>
     <script src="js/controlador.js"></script>
 </body>
