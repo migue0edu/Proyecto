@@ -17,7 +17,7 @@ const template = [
 
 function createWindow() {
     // Create the browser window.
-    mainWindow = new BrowserWindow({width: 800, height: 600});
+    mainWindow = new BrowserWindow({width: 1266, height: 629});
 
     // and load the index.html of the app.
     mainWindow.loadFile('index.html');

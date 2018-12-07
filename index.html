@@ -4,45 +4,70 @@
     <meta charset="UTF-8">
     <title>Proyecto Señales</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom.css">
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </head>
-<body>
-    <div class="card rounded">
-        <div class="card-header">
-            Ingrese datos:
-        </div>
-        <div class="card-body">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="accion" class="mr-2">Accion</label>
-                    <select id="accion" class="custom-select mr-md-4"></select>
-                </div>
-            </form>
-            <hr>
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="serieX" ><h4>X(n)</h4></label>
-                        <input type="text" class="form-control" id="serieX" placeholder="1,2,3*,4">
+<body >
+    <div class="container ml-3 mr-3">
+        <div class="row">
+            <div class="col-4">
+                <div class="card rounded my-2">
+                    <div class="card-header" >
+                        Ingrese datos:
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="serieH"><h4>H(n)</h4></label>
-                        <input type="text" class="form-control" id="serieH" placeholder="5,8,10,5,6,8*,1">
+                    <div class="card-body" >
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="accion" class="mr-2">Accion</label>
+                                <select id="accion" class="custom-select mr-md-4" onchange="actualizarUI()"></select>
+                            </div>
+                        </form>
+                        <hr >
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="serieX" ><h4>X(n)</h4></label>
+                                    <input type="text" class="form-control" id="serieX" placeholder="1,2,3*,4">
+                                </div>
+                                <div class="form-group col-md-12" id="serieY">
+                                    <label for="serieH"><h4>Y(n)</h4></label>
+                                    <input type="text" class="form-control" id="serieH" placeholder="5,8,10,5,6,8*,1">
+                                </div>
+                                <div class="form-group col-md-12" id="tipoInterpolacion" >
+                                    <label for="tipoI">Convención de interpolación:</label>
+                                    <select id="tipoI" class="custom-select"></select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group row">
+                                    <label for="parametro" class="col-3 col-form-label">Factor:</label>
+                                    <div class="col-4">
+                                        <input type="number" class="form-control" id="parametro" placeholder="1">
+                                    </div>
+                                    <div class="col-auto ml-4">
+                                        <button type="button" class="btn bg-info" onclick="ejecutar()">Realizar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group row">
-                        <label for="factor" class="col-sm-4 col-form-label">Factor (k)</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="factor" placeholder="1">
-                        </div>
+                <div class="card rounded my-2">
+                    <div class="card-header">
+                        Resultado:
+                    </div>
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="resultado" readonly>
                     </div>
                 </div>
-            </form>
+            </div>
+            <div class="col"></div>
         </div>
     </div>
 
 
+
     <script src="js/configUi.js"></script>
+    <script src="js/controlador.js"></script>
 </body>
 </html>

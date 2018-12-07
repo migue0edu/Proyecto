@@ -1,0 +1,21 @@
+body {
+    background: #36383F !important;
+}
+
+hr {
+    border-color: white !important;
+}
+
+.card.rounded {
+    border-color: #232323 !important;
+}
+
+.card-body {
+    background: #232323 !important;
+    color: white !important;
+}
+
+.card-header{
+    background: black !important;
+    color: white !important;
+}
