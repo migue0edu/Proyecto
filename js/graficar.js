@@ -17,7 +17,7 @@ let graficar = (data, accion) => {
     let chart = new CanvasJS.Chart("tabres", {
         animationEnabled: true,
         dataPointWidth: 15,
-        theme: "dark2", // "light1", "light2", "dark1", "dark2"
+        theme: "dark1", // "light1", "light2", "dark1", "dark2"
         title:{
             text: "H(n)"
         },
@@ -25,14 +25,16 @@ let graficar = (data, accion) => {
             title: ""
         },
         data: [{
-            type: "column",
+            type: "line",
             showInLegend: true,
+	    borderColor: "rgba(255, 99, 132, 0.2)",
             legendMarkerColor: "grey",
             legendText: "n",
             dataPoints: puntos
         }],
         width: ancho,
-        height: 500
+        height: 500,
+	lineTension: 10
     });
 
     chart.render();
@@ -63,7 +65,7 @@ let graficar = (data, accion) => {
             title: " "
         },
         data: [{
-            type: "column",
+            type: "line",
             showInLegend: true,
             legendMarkerColor: "grey",
             legendText: "n",
@@ -102,7 +104,7 @@ let graficar = (data, accion) => {
                 title: " "
             },
             data: [{
-                type: "column",
+                type: "line",
                 showInLegend: true,
                 legendMarkerColor: "grey",
                 legendText: "n",
