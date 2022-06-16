@@ -10,7 +10,7 @@
   "author": "Miguel E.",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^2.0.14"
+    "electron": "^15.5.5"
   },
   "dependencies": {
     "bootstrap": ">=4.3.1",
